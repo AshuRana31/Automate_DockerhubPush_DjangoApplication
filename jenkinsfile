@@ -8,6 +8,12 @@ pipeline {
                 sudo docker build .'''
             }
         }
+        stage('ImageID') {
+            steps {
+                sh label: '', script: '''#! /bin/bash
+                sudo docker images'''
+            }
+        }
         
     }
 }
