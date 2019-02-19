@@ -1,0 +1,4 @@
+node{
+sh label: '', script: '''#! /bin/bash
+sudo docker build .
+}
