@@ -8,26 +8,6 @@ pipeline {
                 sudo docker build .'''
             }
         }
-        stage('ImageID') {
-            steps {
-                sh label: '', script: '''#! /bin/bash
-                sudo docker images'''
-            }
-        }
-        stage('Tagging') {
-            steps {
-                sh label: '', script: '''#! /bin/bash
-                docker tag 0e5574283393 fedora/httpd:version1.0'''
-            }
-        }
-        stage('Pushing') 
-        {
-        steps {
-          withDockerRegistry([ credentialsId: "ashurana31", url: "dockerhubashu31" ]) {
-          sh 'docker push brightbox/terraform:latest'
-          sh 'docker push brightbox/cli:latest'
-          
-        }
-      }
+        
     }
 }
