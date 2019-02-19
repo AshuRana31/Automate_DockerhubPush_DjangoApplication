@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                docker.build('AshuRana31/Automate_DockerhubPush_DjangoApplication')
+                sh label: '', script: '''#! /bin/bash
+                sudo docker build .'''
             }
         }
     }
