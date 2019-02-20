@@ -1,26 +1,31 @@
-pipeline {
-   agent any
-   stages {
-       stage('Build') {
-           steps {
-               sh label: '', script: '''#! /bin/bash
-               sudo docker build -t ashurana31/firstimage:Automate_Push .'''
-           }
+pipeline
+{
+ agent any
+ environment
+ {
+   credential = "ashurana31/firstimage"
+ }
+ stages
+ {
+   stage("Build")
+   {
+     steps
+     {
+       sh 'echo "Building"'
+       sh 'sudo docker build -t ashurana31/firstimage:djangoimage_automate .'
+     }
+   }
+   stage("Push Image ")
+   {
+     steps
+     {
+       sh 'echo "Pushing images"'
+       sh 'sudo chmod 666 /var/run/docker.sock'
+       withDockerRegistry([ credentialsId: "Dockerhub_credentials", url: "https://registry.hub.docker.com" ])
+       {
+         sh 'sudo docker push ashurana31/firstimage:djangoimage_automate '
        }
-       
-      
-   stage('Pushing') {
-           steps {
-               script{
-               sudo chmod 666 /var/run/docker.sock
-               withDockerRegistry([url: 'https://registry.hub.docker.com', credentialsId: 'Dockerhub_credentials'])
-               {
-               docker.image('ashurana31/firstimage:Automate_Push').push()
-               }
-             }
-           }
-         }
-         } 
-       }
-     
-
+     }
+   }
+ }
+}
