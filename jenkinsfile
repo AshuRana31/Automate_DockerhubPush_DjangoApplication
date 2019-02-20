@@ -12,6 +12,7 @@ pipeline {
 stage('Pushing') {
            steps {
                sh label: '', script: '''#! /bin/bash
+               sudo chmod 666 /var/run/docker.sock
                docker push ashurana31/firstimage'''
            }
 }
