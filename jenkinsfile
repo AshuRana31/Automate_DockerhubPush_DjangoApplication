@@ -1,5 +1,7 @@
 pipeline {
-   agent any    
+   node
+   {
+         def app
    stages {
        stage('Build') {
            steps {
@@ -12,11 +14,12 @@ pipeline {
 stage('Pushing') {
            steps {
                docker.withRegistry('','Dockerhub_credentials'){
-               push('$env.BUILD_NUMBER')
-               push('latest')
+               app.push('$env.BUILD_NUMBER')
+               app.push('latest')
                }
            }
 }
           
+     }
      }
 }
