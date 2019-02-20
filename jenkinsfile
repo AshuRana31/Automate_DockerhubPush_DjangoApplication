@@ -4,7 +4,7 @@ pipeline {
        stage('Build') {
            steps {
                sh label: '', script: '''#! /bin/bash
-               app = sudo docker build .'''
+               sudo docker build .'''
            }
        }
        stage('ImageID') {
