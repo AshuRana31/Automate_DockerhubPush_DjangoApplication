@@ -14,7 +14,7 @@ pipeline {
                sh label: '', script: '''#! /bin/bash
                docker.withRegistry('','Dockerhub_credentials'){
                docker.image('ashurana31/firstimage:Automate_Push').push()
-               }
+               }'''
            }
          }
           
