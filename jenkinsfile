@@ -4,25 +4,15 @@ pipeline {
        stage('Build') {
            steps {
                sh label: '', script: '''#! /bin/bash
-               sudo docker build .'''
+               sudo docker build -t ashurana31/firstimage:Automate_Push .'''
            }
        }
-       stage('ImageID') {
-           steps {
-               sh label: '', script: '''#! /bin/bash
-               sudo docker images'''
-           }
-       }
-       stage('Tagging') {
-           steps {
-               sh label: '', script: '''#! /bin/bash
-               docker build -t ashurana31/firstimage:AutomatePush'''
-           }
-}
+       
+      
 stage('Pushing') {
            steps {
                sh label: '', script: '''#! /bin/bash
-               docker push ashurana31/AutomatePush'''
+               docker push ashurana31/firstimage'''
            }
 }
           
