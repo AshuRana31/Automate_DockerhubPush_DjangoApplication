@@ -1,7 +1,5 @@
 pipeline {
-   node
-   {
-         def app
+   
    stages {
        stage('Build') {
            steps {
@@ -22,4 +20,4 @@ stage('Pushing') {
           
      }
      }
-}
+
