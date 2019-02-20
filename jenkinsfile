@@ -3,7 +3,7 @@ pipeline
  agent any
  environment
  {
-   credential = "ashurana31/firstimage"
+   credential = "ashurana31/ashu"
  }
  stages
  {
@@ -12,7 +12,7 @@ pipeline
      steps
      {
        sh 'echo "Building"'
-       sh 'sudo docker build -t ashurana31/firstimage:djangoimage_automate .'
+       sh 'sudo docker build -t ashurana31/ashu:image .'
      }
    }
    stage("Push Image ")
@@ -23,7 +23,7 @@ pipeline
        sh 'sudo chmod 666 /var/run/docker.sock'
        withDockerRegistry([ credentialsId: "Dockerhub_credentials", url: "https://registry.hub.docker.com" ])
        {
-         sh 'sudo docker push ashurana31/firstimage:djangoimage_automate'
+         sh 'sudo docker push ashurana31/ashu:image'
        }
      }
    }
