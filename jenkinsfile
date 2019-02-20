@@ -11,13 +11,13 @@ pipeline {
       
    stage('Pushing') {
            steps {
-               sh label: '', script: '''#! /bin/bash
-               docker.withRegistry('https://registry.hub.docker.com','Dockerhub_credentials'){
+               script{
+               docker.withRegistry('https://registry.hub.docker.com','Dockerhub_credentials')
                docker.image('ashurana31/firstimage:Automate_Push').push()
-               }'''
+               }
            }
          }
-          
+         } 
        }
-     }
+     
 
