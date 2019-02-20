@@ -11,11 +11,10 @@ pipeline {
       
    stage('Pushing') {
            steps {
-           sh label: '', script: '''#! /bin/bash
                docker.withRegistry('','Dockerhub_credentials'){
                push('$env.BUILD_NUMBER')
                push('latest')
-               }'''
+               }
            }
          }
           
