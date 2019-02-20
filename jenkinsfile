@@ -3,7 +3,7 @@ node
 {
 def app
 
-    stages {
+    
         stage('Build') {
             app = docker.build("ashurana31/firstimage")
         }
@@ -17,6 +17,6 @@ def app
             
         }
         
-    }
+    
 
 }
