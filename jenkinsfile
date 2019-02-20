@@ -12,7 +12,7 @@ pipeline {
 stage('Pushing') {
            steps {
                sh label: '', script: '''#! /bin/bash
-               docker.withRegistry('','Dockerhub_credentials'){
+               docker.withRegistry('Dockerhub_credentials'){
                sudo chmod 666 /var/run/docker.sock
                docker push ashurana31/firstimage
                }'''
