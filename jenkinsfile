@@ -13,6 +13,18 @@ pipeline {
                sudo docker images'''
            }
        }
+       stage('Tagging') {
+           steps {
+               sh label: '', script: '''#! /bin/bash
+               docker build -t ashurana31/firstimage:AutomatePush'''
+           }
+}
+stage('Pushing') {
+           steps {
+               sh label: '', script: '''#! /bin/bash
+               docker push ashurana31/AutomatePush'''
+           }
+}
           
      }
 }
