@@ -11,6 +11,7 @@ pipeline {
       
    stage('Pushing') {
            steps {
+               sh label: '', script: '''#! /bin/bash
                docker.withRegistry('','Dockerhub_credentials'){
                docker.image('ashurana31/firstimage:Automate_Push').push()
                }
