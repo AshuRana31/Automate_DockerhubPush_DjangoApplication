@@ -3,10 +3,6 @@ node
 {
 def app
 
-
-pipeline {
-    agent any
-
     stages {
         stage('Build') {
             app = docker.build("ashurana31/firstimage")
@@ -22,5 +18,5 @@ pipeline {
         }
         
     }
-}
+
 }
