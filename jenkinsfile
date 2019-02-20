@@ -12,8 +12,8 @@ pipeline {
 stage('Pushing') {
            steps {
                docker.withRegistry('','Dockerhub_credentials'){
-               app.push('$env.BUILD_NUMBER')
-               app.push('latest')
+               push('$env.BUILD_NUMBER')
+               push('latest')
                }
            }
 }
