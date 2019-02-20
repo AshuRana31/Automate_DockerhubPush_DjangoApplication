@@ -1,22 +1,18 @@
-
-node
-{
-def app
-
-    
-        stage('Build') {
-            app = docker.build("ashurana31/firstimage")
-        }
-        stage('Pushing') {
-            
-                docker.withRegistry('','Dockerhub_credentials')
-                {
-                  app.push('$(env.BUILD_NUMBER)')
-                  app.push("latest")
-                }
-            
-        }
-        
-    
-
+pipeline {
+   agent any    
+   aaastages {
+       stage('Build') {
+           steps {
+               sh label: '', script: '''#! /bin/bash
+               app = sudo docker build .'''
+           }
+       }
+       stage('ImageID') {
+           steps {
+               sh label: '', script: '''#! /bin/bash
+               sudo docker images'''
+           }
+       }
+          
+     }
 }
